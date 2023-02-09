@@ -1,0 +1,4 @@
+include Datasets/BostonHousing/boston_housing.pyndb.gz
+include Datasets/FashionMNIST/fashion_mnist.pyndb.gz
+include Datasets/Iris/iris.pyndb.gz
+include Datasets/MNIST/mnist.pyndb.gz

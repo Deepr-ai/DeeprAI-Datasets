@@ -1,4 +1,5 @@
 from setuptools import setup
+from setuptools import find_packages
 import shutil
 from os.path import exists, expanduser
 from os import mkdir
@@ -11,16 +12,20 @@ if not exists(f'{HOME}/.datasets'):
 
 for file, name in zip(files, names):
     src_file = file
-    dst_file = name
-    shutil.move(src_file, dst_file)
+    dst_file = f"{HOME}/.datasets/{name}"
+    shutil.copy(src_file, dst_file)
 
 setup(
     name='DeeprAI-Datasets',
-    version='0.0.1',
+    version='0.0.2',
     author='Kieran Carter',
     description='A collection of datasets to use with DeeprAI',
     url="https://github.com/Deepr-ai/DeeprAI-Datasets",
-    packages=["Datasets"],
+    packages=find_packages(),
+    package_data={"boston":["Datasets/BostonHousing/boston_housing.pyndb.gz"],
+                  "fashion":["Datasets/FashionMNIST/fashion_mnist.pyndb.gz"],
+                  "iris": ["Datasets/Iris/iris.pyndb.gz"],
+                  "mnist": ["Datasets/MNIST/mnist.pyndb.gz"]},
     install_requires=[
         'numpy',
         'pyndb',
