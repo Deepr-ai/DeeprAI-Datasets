@@ -1,6 +1,6 @@
-from os.path import exists, expanduser
-from os import mkdir
-HOME = expanduser("~")
+from pathlib import Path
 
-if not exists(f'{HOME}/.datasets'):
-    mkdir(f'{HOME}/.datasets')
+HOME = Path.home()
+DATASET_DIR = HOME / ".datasets"
+
+DATASET_DIR.mkdir(exist_ok=True)
